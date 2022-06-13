@@ -1,5 +1,6 @@
 package com.codegym.service.product;
 
+import com.codegym.model.Category;
 import com.codegym.model.Product;
 import com.codegym.repository.IProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,6 +45,16 @@ public class ProductService implements IProductService{
     @Override
     public Iterable<Product> getTop4() {
         return productRepository.getTop4();
+    }
+
+    @Override
+    public Iterable<Product> findAllByCategory(Category category) {
+        return productRepository.findAllByCategory(category);
+    }
+
+    @Override
+    public Iterable<Product> findAllByPriceBetween(int from, int to) {
+        return productRepository.findAllByPriceBetween(from,to);
     }
 
 }

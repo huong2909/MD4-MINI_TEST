@@ -1,5 +1,6 @@
 package com.codegym.repository;
 
+import com.codegym.model.Category;
 import com.codegym.model.Product;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -16,5 +17,9 @@ public interface IProductRepository extends PagingAndSortingRepository<Product, 
 
     @Query(value = "select * from products order by id desc LIMIT 4", nativeQuery = true)
     Iterable<Product> getTop4();
+
+    Iterable<Product> findAllByCategory(Category category);
+
+    Iterable<Product> findAllByPriceBetween(int from, int to);
 
 }
